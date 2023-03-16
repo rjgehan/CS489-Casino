@@ -69,6 +69,24 @@ function createDeck() {
   return deck;
 }
 
+function hit() {
+  if (gameOver) {
+    return;
+  }
+
+  let card = drawCard();
+  playerHand.push(card);
+  let cardImage = createCardImage(card);
+  playerHandElement.appendChild(cardImage);
+  updateScore(playerHand, playerScoreElement);
+
+  if (playerScore > 21) {
+    gameOver = true;
+    endGame();
+  }
+}
+
+
 function shuffle(deck) {
   for (let i = deck.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
