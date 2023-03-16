@@ -11,6 +11,34 @@ h1 {
   margin-bottom: 24px;
 }
 
+p {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+#player-hand, #dealer-hand {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.card {
+  width: 100px;
+  height: 150px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  background-color: #fff;
+}
+
+.card > p {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 12px;
+}
+
 button {
   font-size: 24px;
   padding: 12px 24px;
@@ -20,18 +48,13 @@ button {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  margin-right: 12px;
 }
 
 button:hover {
   background-color: #0062cc;
 }
 
-p#result {
-  font-size: 24px;
-  margin-top: 24px;
-}
-
-p#money {
-  font-size: 24px;
-  margin-top: 24px;
+.hidden {
+  display: none;
 }
