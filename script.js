@@ -1,5 +1,6 @@
 const suits = ["hearts", "diamonds", "clubs", "spades"];
 const values = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
+
 const playerHandElement = document.getElementById("player-hand");
 const dealerHandElement = document.getElementById("dealer-hand");
 const playerScoreElement = document.getElementById("player-score");
@@ -26,7 +27,7 @@ newGameButton.addEventListener("click", () => {
   standButton.disabled = false;
   newGameButton.disabled = true;
   playerHandElement.innerHTML = "";
-    dealerHandElement.innerHTML = "";
+  dealerHandElement.innerHTML = "";
   playerScoreElement.textContent = "0";
   dealerScoreElement.textContent = "0";
   dealCards();
@@ -69,24 +70,6 @@ function createDeck() {
   return deck;
 }
 
-function hit() {
-  if (gameOver) {
-    return;
-  }
-
-  let card = drawCard();
-  playerHand.push(card);
-  let cardImage = createCardImage(card);
-  playerHandElement.appendChild(cardImage);
-  updateScore(playerHand, playerScoreElement);
-
-  if (playerScore > 21) {
-    gameOver = true;
-    endGame();
-  }
-}
-
-
 function shuffle(deck) {
   for (let i = deck.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -127,62 +110,56 @@ function calculateScore(hand) {
 
 function getCardValue(value) {
   if (value === "Ace") {
-    return 1;
-  } else if (typeof value === "number") {
-    return value;
-  } else {
-    return 10;
-  }
+return 1;
+} else if (value === "Jack" || value === "Queen" || value === "King") {
+return 10;
+} else {
+return value;
+}
 }
 
 function dealCards() {
-  playerHand.push(getCard());
-  addCardToHand(playerHandElement, playerHand[0]);
-  playerScore = calculateScore(playerHand);
-  playerScoreElement.textContent = playerScore.toString();
-
-  dealerHand.push(getCard());
-  addCardToHand(dealerHandElement, dealerHand[0]);
-  dealerScore = calculateScore(dealerHand);
-  dealerScoreElement.textContent = dealerScore.toString();
-
-  playerHand.push(getCard());
-  addCardToHand(playerHandElement, playerHand[1]);
-  playerScore = calculateScore(playerHand);
-  playerScoreElement.textContent = playerScore.toString();
+playerHand.push(getCard());
+addCardToHand(playerHandElement, playerHand[playerHand.length - 1]);
+dealerHand.push(getCard());
+addCardToHand(dealerHandElement, dealerHand[dealerHand.length - 1]);
+playerHand.push(getCard());
+addCardToHand(playerHandElement, playerHand[playerHand.length - 1]);
+dealerHand.push(getCard());
+addCardToHand(dealerHandElement, dealerHand[dealerHand.length - 1]);
+playerScore = calculateScore(playerHand);
+dealerScore = calculateScore(dealerHand.slice(0, 1));
+playerScoreElement.textContent = playerScore.toString();
+dealerScoreElement.textContent = dealerScore.toString();
+if (playerScore === 21) {
+gameOver = true;
+endGame();
+}
 }
 
 function endGame() {
-  hitButton.disabled = true;
-  standButton.disabled = true;
-  newGameButton.disabled = false;
-  if (playerScore > 21) {
-    alert("You bust, dealer wins!");
-  } else if (dealerScore > 21) {
-    alert("Dealer busts, you win!");
-    } else if (playerScore > dealerScore) {
-    alert("You win!");
-  } else if (playerScore < dealerScore) {
-    alert("Dealer wins!");
-  } else {
-    alert("It's a tie!");
-  }
+hitButton.disabled = true;
+standButton.disabled = true;
+newGameButton.disabled = false;
+dealerScoreElement.textContent = dealerScore.toString();
+while (dealerScore < 17) {
+dealerHand.push(getCard());
+addCardToHand(dealerHandElement, dealerHand[dealerHand.length - 1]);
+dealerScore = calculateScore(dealerHand);
+dealerScoreElement.textContent = dealerScore.toString();
+}
+if (playerScore > 21) {
+alert("You went bust! You lose.");
+} else if (dealerScore > 21) {
+alert("Dealer went bust! You win.");
+} else if (playerScore > dealerScore) {
+alert("You win!");
+} else if (dealerScore > playerScore) {
+alert("You lose.");
+} else {
+alert("It's a tie!");
+}
 }
 
-function resetGame() {
-  playerHand = [];
-  dealerHand = [];
-  playerScore = 0;
-  dealerScore = 0;
-  gameOver = false;
-  playerHandElement.innerHTML = "";
-  dealerHandElement.innerHTML = "";
-  playerScoreElement.textContent = "0";
-  dealerScoreElement.textContent = "0";
-  hitButton.disabled = false;
-  standButton.disabled = false;
-  newGameButton.disabled = true;
-}
-
-resetGame();
+dealCards();
 
