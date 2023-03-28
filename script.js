@@ -95,7 +95,8 @@ function addCardToHand(handElement, card) {
   const cardElement = document.createElement("div");
   cardElement.classList.add("card");
   const suitElement = document.createElement("p");
-  suitElement.textContent = card.s
+  suitElement.textContent = card.s;
+}
 
 // takes a hand (an array of card objects) as input and returns the total score of the hand in the game of blackjack
 function calculateScore(hand) {
@@ -124,7 +125,7 @@ function getCardValue(value) {
   }
 }
 
-// deals two cards each to the player and the dealer, calculates their scores, and displays the scores on the webpage. If the player's score is 21, 
+// deals two cards each to the player and the dealer, calculates their scores, and displays the scores on the webpage. If the player's score is 21,
 // the game is over and the endGame() function is called.
 function dealCards() {
   playerHand.push(getCard());
@@ -145,8 +146,7 @@ function dealCards() {
   }
 }
 
-
-// ends the game by disabling the hit and stand buttons and enabling the new game button. It then plays out the dealer's turn according to the rules 
+// ends the game by disabling the hit and stand buttons and enabling the new game button. It then plays out the dealer's turn according to the rules
 // of blackjack until their score is 17 or higher. It then compares the player's score to the dealer's score and displays a message indicating the result of the game.
 function endGame() {
   hitButton.disabled = true;
