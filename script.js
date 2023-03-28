@@ -1,3 +1,5 @@
+//test
+
 const suits = ["hearts", "diamonds", "clubs", "spades"];
 const values = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
 
@@ -110,56 +112,55 @@ function calculateScore(hand) {
 
 function getCardValue(value) {
   if (value === "Ace") {
-return 1;
-} else if (value === "Jack" || value === "Queen" || value === "King") {
-return 10;
-} else {
-return value;
-}
+    return 1;
+  } else if (value === "Jack" || value === "Queen" || value === "King") {
+    return 10;
+  } else {
+    return value;
+  }
 }
 
 function dealCards() {
-playerHand.push(getCard());
-addCardToHand(playerHandElement, playerHand[playerHand.length - 1]);
-dealerHand.push(getCard());
-addCardToHand(dealerHandElement, dealerHand[dealerHand.length - 1]);
-playerHand.push(getCard());
-addCardToHand(playerHandElement, playerHand[playerHand.length - 1]);
-dealerHand.push(getCard());
-addCardToHand(dealerHandElement, dealerHand[dealerHand.length - 1]);
-playerScore = calculateScore(playerHand);
-dealerScore = calculateScore(dealerHand.slice(0, 1));
-playerScoreElement.textContent = playerScore.toString();
-dealerScoreElement.textContent = dealerScore.toString();
-if (playerScore === 21) {
-gameOver = true;
-endGame();
-}
+  playerHand.push(getCard());
+  addCardToHand(playerHandElement, playerHand[playerHand.length - 1]);
+  dealerHand.push(getCard());
+  addCardToHand(dealerHandElement, dealerHand[dealerHand.length - 1]);
+  playerHand.push(getCard());
+  addCardToHand(playerHandElement, playerHand[playerHand.length - 1]);
+  dealerHand.push(getCard());
+  addCardToHand(dealerHandElement, dealerHand[dealerHand.length - 1]);
+  playerScore = calculateScore(playerHand);
+  dealerScore = calculateScore(dealerHand.slice(0, 1));
+  playerScoreElement.textContent = playerScore.toString();
+  dealerScoreElement.textContent = dealerScore.toString();
+  if (playerScore === 21) {
+    gameOver = true;
+    endGame();
+  }
 }
 
 function endGame() {
-hitButton.disabled = true;
-standButton.disabled = true;
-newGameButton.disabled = false;
-dealerScoreElement.textContent = dealerScore.toString();
-while (dealerScore < 17) {
-dealerHand.push(getCard());
-addCardToHand(dealerHandElement, dealerHand[dealerHand.length - 1]);
-dealerScore = calculateScore(dealerHand);
-dealerScoreElement.textContent = dealerScore.toString();
-}
-if (playerScore > 21) {
-alert("You went bust! You lose.");
-} else if (dealerScore > 21) {
-alert("Dealer went bust! You win.");
-} else if (playerScore > dealerScore) {
-alert("You win!");
-} else if (dealerScore > playerScore) {
-alert("You lose.");
-} else {
-alert("It's a tie!");
-}
+  hitButton.disabled = true;
+  standButton.disabled = true;
+  newGameButton.disabled = false;
+  dealerScoreElement.textContent = dealerScore.toString();
+  while (dealerScore < 17) {
+    dealerHand.push(getCard());
+    addCardToHand(dealerHandElement, dealerHand[dealerHand.length - 1]);
+    dealerScore = calculateScore(dealerHand);
+    dealerScoreElement.textContent = dealerScore.toString();
+  }
+  if (playerScore > 21) {
+    alert("You went bust! You lose.");
+  } else if (dealerScore > 21) {
+    alert("Dealer went bust! You win.");
+  } else if (playerScore > dealerScore) {
+    alert("You win!");
+  } else if (dealerScore > playerScore) {
+    alert("You lose.");
+  } else {
+    alert("It's a tie!");
+  }
 }
 
 dealCards();
-
