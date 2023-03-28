@@ -1,8 +1,8 @@
-//test
-
+// Create arrays for the suits and values of the cards
 const suits = ["hearts", "diamonds", "clubs", "spades"];
 const values = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
 
+// Get references to various elements in the HTML
 const playerHandElement = document.getElementById("player-hand");
 const dealerHandElement = document.getElementById("dealer-hand");
 const playerScoreElement = document.getElementById("player-score");
@@ -11,6 +11,7 @@ const hitButton = document.getElementById("hit-button");
 const standButton = document.getElementById("stand-button");
 const newGameButton = document.getElementById("new-game-button");
 
+// Initialize variables for the deck, player's hand, dealer's hand, scores, and game status
 let deck = [];
 let playerHand = [];
 let dealerHand = [];
@@ -18,6 +19,7 @@ let playerScore = 0;
 let dealerScore = 0;
 let gameOver = false;
 
+// When the new game button is clicked, reset everything and deal new cards
 newGameButton.addEventListener("click", () => {
   deck = createDeck();
   playerHand = [];
@@ -35,6 +37,7 @@ newGameButton.addEventListener("click", () => {
   dealCards();
 });
 
+// When the hit button is clicked, draw a new card for the player's hand and update the score
 hitButton.addEventListener("click", () => {
   if (!gameOver) {
     playerHand.push(getCard());
@@ -48,6 +51,7 @@ hitButton.addEventListener("click", () => {
   }
 });
 
+// When the stand button is clicked, the dealer draws cards until their score is at least 17, then the game ends
 standButton.addEventListener("click", () => {
   if (!gameOver) {
     while (dealerScore < 17) {
@@ -61,6 +65,7 @@ standButton.addEventListener("click", () => {
   }
 });
 
+// Function to create a new deck of cards
 function createDeck() {
   let deck = [];
   for (let suit of suits) {
@@ -72,6 +77,7 @@ function createDeck() {
   return deck;
 }
 
+// Function to shuffle a deck of cards
 function shuffle(deck) {
   for (let i = deck.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -79,22 +85,19 @@ function shuffle(deck) {
   }
 }
 
+// Function to get a card from the deck
 function getCard() {
   return deck.pop();
 }
 
+// Function to add a card to a hand
 function addCardToHand(handElement, card) {
   const cardElement = document.createElement("div");
   cardElement.classList.add("card");
   const suitElement = document.createElement("p");
-  suitElement.textContent = card.suit;
-  const valueElement = document.createElement("p");
-  valueElement.textContent = card.value.toString();
-  cardElement.appendChild(suitElement);
-  cardElement.appendChild(valueElement);
-  handElement.appendChild(cardElement);
-}
+  suitElement.textContent = card.s
 
+// takes a hand (an array of card objects) as input and returns the total score of the hand in the game of blackjack
 function calculateScore(hand) {
   let score = 0;
   let hasAce = false;
@@ -110,6 +113,7 @@ function calculateScore(hand) {
   return score;
 }
 
+// takes a card value (a string) as input and returns its corresponding numerical value in the game of blackjack.
 function getCardValue(value) {
   if (value === "Ace") {
     return 1;
@@ -120,6 +124,8 @@ function getCardValue(value) {
   }
 }
 
+// deals two cards each to the player and the dealer, calculates their scores, and displays the scores on the webpage. If the player's score is 21, 
+// the game is over and the endGame() function is called.
 function dealCards() {
   playerHand.push(getCard());
   addCardToHand(playerHandElement, playerHand[playerHand.length - 1]);
@@ -139,6 +145,9 @@ function dealCards() {
   }
 }
 
+
+// ends the game by disabling the hit and stand buttons and enabling the new game button. It then plays out the dealer's turn according to the rules 
+// of blackjack until their score is 17 or higher. It then compares the player's score to the dealer's score and displays a message indicating the result of the game.
 function endGame() {
   hitButton.disabled = true;
   standButton.disabled = true;
