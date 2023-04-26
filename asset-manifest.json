@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/CS489-Casino/static/css/main.07c3d0c5.css",
+    "main.js": "/CS489-Casino/static/js/main.19f30a39.js",
+    "static/js/787.4b5e1643.chunk.js": "/CS489-Casino/static/js/787.4b5e1643.chunk.js",
+    "static/media/logo.svg": "/CS489-Casino/static/media/logo.acdbc3fd4678284e1dab7a2a91442105.svg",
+    "index.html": "/CS489-Casino/index.html",
+    "main.07c3d0c5.css.map": "/CS489-Casino/static/css/main.07c3d0c5.css.map",
+    "main.19f30a39.js.map": "/CS489-Casino/static/js/main.19f30a39.js.map",
+    "787.4b5e1643.chunk.js.map": "/CS489-Casino/static/js/787.4b5e1643.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.07c3d0c5.css",
+    "static/js/main.19f30a39.js"
+  ]
+}
