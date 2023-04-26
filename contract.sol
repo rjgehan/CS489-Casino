@@ -1,6 +1,6 @@
 pragma solidity ^0.8.0;
 
-contract Withdrawable {
+contract Casino489 {
 
     mapping(address => uint) public balances;
     uint public contractBalance;
@@ -11,10 +11,11 @@ contract Withdrawable {
     }
 
     function withdraw(uint amount, uint multiplier) public {
-        require(balances[msg.sender] >= amount, "Insufficient balance");
         balances[msg.sender] -= amount;
         contractBalance -= amount;
         uint reward = amount * multiplier;
-        payable(msg.sender).transfer(reward);
+        require(reward <= contractBalance, "Insufficient contract balance");
+        balances[msg.sender] += reward;
+        contractBalance -= reward;
     }
 }
