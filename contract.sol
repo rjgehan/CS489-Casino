@@ -1,26 +1,20 @@
 pragma solidity ^0.8.0;
 
-contract DepositWithdraw {
-    mapping(address => uint256) public balances;
+contract Withdrawable {
 
-    event Deposit(address indexed account, uint256 amount);
-    event Withdraw(address indexed account, uint256 amount);
+    mapping(address => uint) public balances;
+    uint public contractBalance;
 
     function deposit() public payable {
         balances[msg.sender] += msg.value;
-        emit Deposit(msg.sender, msg.value);
+        contractBalance += msg.value;
     }
 
-    function withdraw(uint256 amount) public {
+    function withdraw(uint amount, uint multiplier) public {
         require(balances[msg.sender] >= amount, "Insufficient balance");
         balances[msg.sender] -= amount;
-        payable(msg.sender).transfer(amount);
-        emit Withdraw(msg.sender, amount);
+        contractBalance -= amount;
+        uint reward = amount * multiplier;
+        payable(msg.sender).transfer(reward);
     }
-
-    function addEther(uint256 amount) public payable {
-    require(msg.value == amount, "Invalid amount of Ether sent");
-    balances[msg.sender] += amount;
-    emit Deposit(msg.sender, amount);
-}
 }
