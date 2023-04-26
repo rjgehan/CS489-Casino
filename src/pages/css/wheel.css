@@ -1,0 +1,93 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #D4AF37;
+  }
+  
+  h1 {
+    font-size: 48px;
+    margin-bottom: 24px;
+    color: #800020;
+    background-color: #D4A000;
+    font-size: x-large;
+  }
+  
+  p {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  
+  #player-hand, #dealer-hand {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  
+  .card {
+    width: 100px;
+    height: 150px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    background-color: #fff;
+  }
+  
+  .card > p {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 12px;
+  }
+  
+  button {
+    font-size: 24px;
+    padding: 12px 24px;
+    background-color: #800020;
+    color: #D4A000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-right: 12px;
+  }
+  
+  button:hover {
+    background-color: #800000;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  body {
+    background-color: #D4AF37;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #800020;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: #D4A000;
+    text-align: center;
+    padding: 34px 188px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #800000;
+  }
