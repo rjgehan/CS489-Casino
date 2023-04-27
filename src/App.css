@@ -1,0 +1,133 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: black;
+  background-image: url("./pages/css/blackbackground.jpg");
+  border: 50px solid red;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #ffffff;
+}
+
+.App-link {
+  color: red;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+h1 {
+  color: red;
+  background-color: black;
+  font-size: calc(50px + 4vmin);
+}
+
+.login-container {
+  background-color: yellow;
+}
+
+.login-body {
+  background-color: red;
+}
+
+input {
+  background-color: yellow;
+  color: red;
+}
+
+button {
+  background-color: red;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: red;
+  font-weight: bold;
+  font-size: large;
+}
+
+li {
+  float: left;
+  font-size: 100%;
+  text-align: center;
+  width: 90px;
+  padding-right: 90px;
+  text-align: center;
+}
+
+li a {
+  color: yellow;
+  width: 20px;
+}
+
+
+li a:hover {
+  background-color: rgb(255, 37, 37);
+}
+
+.Logout {
+  font-size: larger;
+  font-weight: bold;
+  color: yellow;
+  width: 200px;
+}
+
+.spin-button {
+  font-weight: bold;
+  font-size: larger;
+  width: 100px;
+  height: 50px;
+}
+
+.prize-display {
+  color: red;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.wheel-container {
+  background-color: black;
+  border-radius: 20%;
+}
+
+body {
+  background-image: url("./pages/css/goldbackground.jpg");
+}
+
+header {
+  background-color: yellow;
+}
+
+.login-header {
+  color: black;
+}
+
+.login-title {
+  color: black;
+}
