@@ -8,4 +8,6 @@ We will use JavaScript to implement a web-based casino that will feature all cas
 games that will be available to the users.
 
 Github Link: https://github.com/ryangehan/CS489-Casino.git 
-Website : https://ryangehan.github.io/CS489-Casino/ 
+Website : https://ryangehan.github.io/CS489-Casino/
+
+see the master branch for the updated code
